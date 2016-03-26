@@ -20,6 +20,11 @@ public class DaoSecteur {
     
     public static Secteur getNomSecteur(String code) throws SQLException, ClassNotFoundException {
       Secteur unSecteur = null;
+//      Connection con = modele.Connect.Connection();      
+//        Statement state = con.createStatement();
+//        
+//        ResultSet res = state.executeQuery("SELECT * FROM SECTEUR WHERE SEC_CODE='"+ code +"'");
+      
       Jdbc jdbc = Jdbc.getInstance();
         
         String requete = "SELECT * FROM SECTEUR WHERE SEC_CODE='"+ code +"'";

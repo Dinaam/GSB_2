@@ -24,6 +24,12 @@ public class DaoVisiteurs {
         Secteur unSecteur = null;
         Labo unLabo = null;
         
+//        Connection con = modele.Connect.Connection();      
+//        Statement state = con.createStatement();
+//        ResultSet res = state.executeQuery("SELECT * FROM visiteur");
+//        System.out.println(res);
+       
+       
         Jdbc jdbc = Jdbc.getInstance();
         
         String requete = "SELECT * FROM visiteur";
@@ -56,7 +62,11 @@ public class DaoVisiteurs {
         Visiteur unVisiteur = null;
         Secteur unSecteur = null;
         Labo unLabo = null;
-
+        
+//        Connection con = modele.Connect.Connection();      
+//        Statement state = con.createStatement();
+//        
+//        ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_NOM='"+ login +"'");
         Jdbc jdbc = Jdbc.getInstance();
         
         String requete = "SELECT * FROM visiteur where VIS_NOM ='"+ login +"'";

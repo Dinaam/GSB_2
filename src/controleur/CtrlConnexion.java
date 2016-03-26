@@ -32,11 +32,14 @@ public class CtrlConnexion implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == vueConnexion.getjButtonConnect()) {
+            System.out.println("caca");
             String login = vueConnexion.getjTextFieldLogin().getText();
             String mdp = vueConnexion.getjTextFieldPassword().getText();
+            
+            
 
             try {
-
+                
                 Visiteur unVisiteur = DaoVisiteurs.selectOneByLogin(login);
                 if (unVisiteur == null) {
                     JOptionPane.showMessageDialog(vueConnexion, "Aucun visiteur avec ce login");

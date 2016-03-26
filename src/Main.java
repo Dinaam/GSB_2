@@ -1,8 +1,10 @@
 import controleur.CtrlConnexion;
+import controleur.CtrlVisiteurs;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import dao.Jdbc;
 import vues.VueConnexion;
+import vues.VueVisiteur;
 
 /**
  *
@@ -25,10 +27,15 @@ public class Main {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Main - échec de connexion");
         }
-        // afficher la vue
+         //afficher la vue
         VueConnexion vue = new VueConnexion();
         CtrlConnexion ctrl = new CtrlConnexion(vue);
         vue.setVisible(true);
+        
+//        VueVisiteur vue = new VueVisiteur();
+//        CtrlVisiteurs ctrlVis = new CtrlVisiteurs(vue);
+//        // afficher la vue
+//        vue.setVisible(true);
     }
     
 }

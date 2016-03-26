@@ -17,27 +17,27 @@ import metier.Labo;
  * @author Dinam
  */
 public class DaoLabo {
-     public static Labo getLabo(String code) throws SQLException, ClassNotFoundException {
-      Labo unLabo = null;
-      
-      
-      
+
+    public static Labo getLabo(String code) throws SQLException, ClassNotFoundException {
+        Labo unLabo = null;
+//        Connection con = modele.Connect.Connection();
+//        Statement state = con.createStatement();
+//
+//        ResultSet res = state.executeQuery("SELECT * FROM LABO WHERE LAB_CODE='"+ code +"'");
+
       Jdbc jdbc = Jdbc.getInstance();
         
         String requete = "SELECT * FROM LABO WHERE LAB_CODE='"+ code +"'";
         PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
         ResultSet res = pstmt.executeQuery();
-      
-      if (res.next()) {
+        if (res.next()) {
             String lab_code = res.getString("lab_code");
             String lab_nom = res.getString("lab_nom");
             String lab_chef = res.getString("lab_chefvente");
             unLabo = new Labo(lab_code, lab_nom, lab_chef);
-           
-      }
-    return unLabo;
-       
-      
-      
-  }
+
+        }
+        return unLabo;
+
+    }
 }
