@@ -41,7 +41,7 @@ public class CtrlVisiteurs implements ActionListener {
     }
 
         
-     public final void afficherLesVisiteurs() {
+    public final void afficherLesVisiteurs() {
         try {
             lesVisiteurs = DaoVisiteurs.getAll();
             for (Visiteur visiteur : lesVisiteurs){

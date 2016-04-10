@@ -36,6 +36,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButtonVisiteurs" max="32767" attributes="0"/>
                           <Component id="jButtonRapport" max="32767" attributes="0"/>
+                          <Component id="jButtonPracticiens" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -58,9 +59,11 @@
                       <Component id="jButtonRapport" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jButtonVisiteurs" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="102" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jButtonPracticiens" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,6 +84,11 @@
     <Component class="javax.swing.JButton" name="jButtonVisiteurs">
       <Properties>
         <Property name="text" type="java.lang.String" value="Visiteurs"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonPracticiens">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Practiciens"/>
       </Properties>
     </Component>
   </SubComponents>

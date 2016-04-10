@@ -27,6 +27,10 @@ public class VueMenu extends javax.swing.JFrame {
     public JButton getjButtonVisiteurs() {
         return jButtonVisiteurs;
     }
+    
+    public JButton getjButtonPracticiens() {
+           return jButtonPracticiens;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,6 +45,7 @@ public class VueMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButtonRapport = new javax.swing.JButton();
         jButtonVisiteurs = new javax.swing.JButton();
+        jButtonPracticiens = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +54,8 @@ public class VueMenu extends javax.swing.JFrame {
         jButtonRapport.setText("Rapport Visite");
 
         jButtonVisiteurs.setText("Visiteurs");
+
+        jButtonPracticiens.setText("Practiciens");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,7 +72,8 @@ public class VueMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonVisiteurs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonRapport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonRapport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonPracticiens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(142, 142, 142))
         );
         layout.setVerticalGroup(
@@ -80,9 +88,11 @@ public class VueMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jButtonRapport)))
-                .addGap(66, 66, 66)
+                .addGap(30, 30, 30)
                 .addComponent(jButtonVisiteurs)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jButtonPracticiens)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,9 +136,11 @@ public class VueMenu extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonPracticiens;
     private javax.swing.JButton jButtonRapport;
     private javax.swing.JButton jButtonVisiteurs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
 }
