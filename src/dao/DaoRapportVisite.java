@@ -19,7 +19,7 @@ public class DaoRapportVisite {
      */
     public static RapportVisite selectOnByMatricule(String matriculeP) throws SQLException, ClassNotFoundException
     {
-        RapportVisite unRappotVisite;
+        RapportVisite unRapportVisite = null;
         
         
         Jdbc jdbc = Jdbc.getInstance();
@@ -32,6 +32,8 @@ public class DaoRapportVisite {
             String matricule = res.getString("VIS_MATRICULE");
             int numRap = res.getInt("RAP_NUM");
         }
+        
+        return unRapportVisite;
         
     }
     

@@ -46,7 +46,7 @@ public class CtrlConnexion implements ActionListener {
 
                     if (mdp.equals(unVisiteur.getMatricule())) {
                         vueMenu = new VueMenu();
-                        CtrlMenu ctrlMenu = new CtrlMenu(vueMenu);
+                        CtrlMenu ctrlMenu = new CtrlMenu(vueMenu, mdp, login);
                         vueMenu.setVisible(true);
                         vueConnexion.setVisible(false);
                     } else {
