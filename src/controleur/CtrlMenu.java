@@ -9,7 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vues.VueMenu;
 import vues.VueVisiteur;
-import vues.VuePraticiens;
+import vues.VuePracticiens;
+import vues.VueRapportVisite;
 
 /**
  *
@@ -18,7 +19,8 @@ import vues.VuePraticiens;
 public class CtrlMenu implements ActionListener{
     private VueMenu vueMenu;
     private VueVisiteur vueVisiteur;
-    private VuePraticiens vuePracticiens;
+    private VuePracticiens vuePracticiens;
+    private VueRapportVisite vueRapportVisite;
     
 
     public CtrlMenu(VueMenu vue) {
@@ -26,6 +28,7 @@ public class CtrlMenu implements ActionListener{
     vueMenu.getjButtonVisiteurs().addActionListener(this);
     vueMenu.getjButtonRapport().addActionListener(this);
     vueMenu.getjButtonPracticiens().addActionListener(this);
+    vueMenu.getjButtonRapport().addActionListener(this);
     }
 
     @Override
@@ -40,6 +43,11 @@ public class CtrlMenu implements ActionListener{
             vuePracticiens = new VuePraticiens();
             CtrlPraticiens ctrlPracticien = new CtrlPraticiens(vuePracticiens);
             vuePracticiens.setVisible(true);
+        }
+        if(source == vueMenu.getjButtonRapport()) {
+            vueRapportVisite = new VueRapportVisite();
+            CtrlRapportVisite ctrlRapportVisite = new CtrlRapportVisite(vueRapportVisite);
+            vueRapportVisite.setVisible(true);
         }
         
     }
