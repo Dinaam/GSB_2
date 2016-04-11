@@ -7,9 +7,10 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import vues.VueMedicament;
 import vues.VueMenu;
 import vues.VueVisiteur;
-import vues.VuePracticiens;
+import vues.VuePraticiens;
 import vues.VueRapportVisite;
 
 /**
@@ -19,8 +20,9 @@ import vues.VueRapportVisite;
 public class CtrlMenu implements ActionListener{
     private VueMenu vueMenu;
     private VueVisiteur vueVisiteur;
-    private VuePracticiens vuePracticiens;
+    private VuePraticiens vuePracticiens;
     private VueRapportVisite vueRapportVisite;
+    private VueMedicament vueMedicament;
     
 
     public CtrlMenu(VueMenu vue) {
@@ -29,6 +31,7 @@ public class CtrlMenu implements ActionListener{
     vueMenu.getjButtonRapport().addActionListener(this);
     vueMenu.getjButtonPracticiens().addActionListener(this);
     vueMenu.getjButtonRapport().addActionListener(this);
+    vueMenu.getjButtonMedicaments().addActionListener(this);
     }
 
     @Override
@@ -48,6 +51,11 @@ public class CtrlMenu implements ActionListener{
             vueRapportVisite = new VueRapportVisite();
             CtrlRapportVisite ctrlRapportVisite = new CtrlRapportVisite(vueRapportVisite);
             vueRapportVisite.setVisible(true);
+        }
+        if(source == vueMenu.getjButtonMedicaments()) {
+            vueMedicament = new VueMedicament();
+            CtrlMedicaments ctrlMedicaments = new CtrlMedicaments(vueMedicament);
+            vueMedicament.setVisible(true);
         }
         
     }
