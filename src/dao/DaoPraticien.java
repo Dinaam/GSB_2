@@ -66,7 +66,7 @@ public class DaoPraticien {
 //        ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_NOM='"+ login +"'");
         Jdbc jdbc = Jdbc.getInstance();
         
-        String requete = "SELECT * FROM visiteur where PRA_NOM ='"+ name +"'";
+        String requete = "SELECT * FROM praticien where PRA_NOM ='"+ name +"'";
         PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
         ResultSet res = pstmt.executeQuery();
         
@@ -74,6 +74,38 @@ public class DaoPraticien {
 
         while (res.next()) {
             int num = res.getInt("PRA_NUM");
+            String nom = res.getString("PRA_NOM");
+            String prenom = res.getString("PRA_PRENOM");
+            String adresse = res.getString("PRA_ADRESSE");
+            String cp = res.getString("PRA_CP");
+            String ville = res.getString("PRA_VILLE");
+            Float coeff = res.getFloat("PRA_COEFNOTORIETE");
+            String typCode = res.getString("TYP_CODE");
+            
+            unType = DaoTypePraticien.getOneByCode(typCode);
+            
+            unPraticien= new Praticien(num, nom, prenom, adresse, cp, ville, coeff, unType);
+
+        }
+        return unPraticien;
+    }
+    public static Praticien selectOneByNum(int num) throws SQLException, ClassNotFoundException {
+        Praticien unPraticien = null;
+        TypePraticien unType = null;
+        
+//        Connection con = modele.Connect.Connection();      
+//        Statement state = con.createStatement();
+//        
+//        ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_NOM='"+ login +"'");
+        Jdbc jdbc = Jdbc.getInstance();
+        
+        String requete = "SELECT * FROM praticien where PRA_NUM ='"+ num +"'";
+        PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
+        ResultSet res = pstmt.executeQuery();
+        
+        
+
+        while (res.next()) {
             String nom = res.getString("PRA_NOM");
             String prenom = res.getString("PRA_PRENOM");
             String adresse = res.getString("PRA_ADRESSE");

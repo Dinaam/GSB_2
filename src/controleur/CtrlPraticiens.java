@@ -32,6 +32,7 @@ public class CtrlPraticiens implements ActionListener {
     CtrlPraticiens(VuePraticiens vue) {
         this.vue = vue;
         afficherLesPraticiens();
+        afficherPraticien();
         vue.getjButtonOk().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);

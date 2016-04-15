@@ -31,6 +31,7 @@ public class CtrlMedicaments implements ActionListener {
     CtrlMedicaments(VueMedicament vue) {
         this.vue = vue;
         afficherLesMedicaments();
+        afficherMedicament();
         vue.getjButtonOk().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
@@ -53,8 +54,7 @@ public class CtrlMedicaments implements ActionListener {
 
     }
 
-    public void afficherPraticien() {
-        //Sélectionne le visiteur
+    public void afficherMedicament() {
         unMedicament = (Medicament) (vue.getjComboBoxSearch().getSelectedItem());
 
         //Affichage

@@ -1,9 +1,14 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import metier.Praticien;
 import metier.RapportVisite;
+import metier.Visiteur;
 
 /**
  * DAO RapportVisite
@@ -17,23 +22,37 @@ public class DaoRapportVisite {
      * @throws SQLException
      * @throws ClassNotFoundException 
      */
-    public static RapportVisite selectOnByMatricule(String matriculeP) throws SQLException, ClassNotFoundException
+    public static List<RapportVisite> selectAllByMatricule(String matriculeP) throws SQLException, ClassNotFoundException
     {
-        RapportVisite unRapportVisite = null;
+        List<RapportVisite> lesRapportsVisites  = new ArrayList<RapportVisite>();
+        RapportVisite unRapport = null;
+        Visiteur unVisiteur;
+        Praticien unPraticien;
+        
         
         
         Jdbc jdbc = Jdbc.getInstance();
         
-        String requete = "SELECT * FROM RapportVisite WHERE VIS_MATRICULE ='"+ matriculeP +"'";
+        String requete = "SELECT * FROM rapport_visite WHERE VIS_MATRICULE ='"+ matriculeP +"'";
         PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
         ResultSet res = pstmt.executeQuery();
         
         while (res.next()) {
-            String matricule = res.getString("VIS_MATRICULE");
-            int numRap = res.getInt("RAP_NUM");
+            int rapNum = res.getInt("RAP_NUM");
+            int praNum = res.getInt("PRA_NUM");
+            Date rapDate = res.getDate("RAP_DATE");
+            String rapBilan = res.getString("RAP_BILAN");
+            String rapMotif = res.getString("RAP_MOTIF");
+            
+            unPraticien = DaoPraticien.selectOneByNum(praNum);
+            unVisiteur = DaoVisiteurs.selectOneByMat(matriculeP);
+            
+            
+            unRapport= new RapportVisite(unVisiteur,rapNum,unPraticien,rapDate,rapMotif);
+            lesRapportsVisites.add(unRapport);
         }
         
-        return unRapportVisite;
+        return lesRapportsVisites;
         
     }
     

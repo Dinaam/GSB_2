@@ -92,4 +92,37 @@ public class DaoVisiteurs {
         }
         return unVisiteur;
     }
+    public static Visiteur selectOneByMat(String matricule) throws SQLException, ClassNotFoundException {
+        Visiteur unVisiteur = null;
+        Secteur unSecteur = null;
+        Labo unLabo = null;
+        
+//        Connection con = modele.Connect.Connection();      
+//        Statement state = con.createStatement();
+//        
+//        ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_NOM='"+ login +"'");
+        Jdbc jdbc = Jdbc.getInstance();
+        
+        String requete = "SELECT * FROM visiteur where VIS_NOM ='"+ matricule +"'";
+        PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
+        ResultSet res = pstmt.executeQuery();
+        
+        
+
+        while (res.next()) {
+            String nom = res.getString("VIS_NOM");
+            String prenom = res.getString("Vis_PRENOM");
+            String adresse = res.getString("VIS_ADRESSE");
+            String cp = res.getString("VIS_CP");
+            String ville = res.getString("VIS_VILLE");
+            Date date = res.getDate("VIS_DATEEMBAUCHE");
+            String secCode = res.getString("SEC_CODE");
+            String labCode = res.getString("LAB_CODE");
+            unSecteur = DaoSecteur.getNomSecteur(secCode);
+            unLabo = DaoLabo.getLabo(labCode);
+            unVisiteur = new Visiteur(matricule, nom, prenom, adresse, cp, ville, date, unSecteur, unLabo);
+
+        }
+        return unVisiteur;
+    }
 }

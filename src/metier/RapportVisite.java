@@ -14,35 +14,29 @@ import java.sql.Date;
 public class RapportVisite
 {
     
-    String matricule;
+    Visiteur unVisiteur;
     int numRap;
-    int numPra;
+    Praticien unPraticien;
     Date date;
     String motif;
     
-    public RapportVisite(String matricule, int numRap, int numPra, Date date, String motif)
+    public RapportVisite(Visiteur unVisiteur, int numRap, Praticien unPraticien, Date date, String motif)
     {
-        this.matricule = matricule;
+        this.unVisiteur = unVisiteur;
         this.numRap = numRap;
-        this.numPra = numPra;
+        this.unPraticien = unPraticien;
         this.date = date;
         this.motif = motif;
     }
     
-    public String getMatricule()
-    {
-        return matricule;
-    }
+   
     
     public int getNumRap()
     {
         return numRap;
     }
     
-    public int getNumPra()
-    {
-        return numPra;
-    }
+   
     
     public Date getDate()
     {
@@ -53,21 +47,31 @@ public class RapportVisite
     {
         return motif;
     }
-    
-    public void setMatricule(String matricule)
-    {
-        this.matricule = matricule;
+
+    public Visiteur getUnVisiteur() {
+        return unVisiteur;
     }
+
+    public void setUnVisiteur(Visiteur unVisiteur) {
+        this.unVisiteur = unVisiteur;
+    }
+
+    public Praticien getUnPraticien() {
+        return unPraticien;
+    }
+
+    public void setUnPraticien(Praticien unPraticien) {
+        this.unPraticien = unPraticien;
+    }
+    
+   
     
     public void setNumRap(int numRap)
     {
         this.numRap = numRap;
     }
     
-    public void setNumPra(int numPra)
-    {
-        this.numPra = numPra;
-    }
+   
     
     public void setMotif(String motif) 
     {

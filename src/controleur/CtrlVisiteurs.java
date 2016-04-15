@@ -25,117 +25,130 @@ import vues.VueMenu;
  * @author btssio
  */
 public class CtrlVisiteurs implements ActionListener {
+
     private VueVisiteur vue;
     private List<Visiteur> lesVisiteurs;
     private Visiteur unVisiteur;
-    
 
     public CtrlVisiteurs(VueVisiteur vue) {
         this.vue = vue;
         afficherLesVisiteurs();
+        afficherVisiteur();
         vue.getjButtonOk().addActionListener(this);
-        vue.getjButtonSuivant().addActionListener(this);        
+        vue.getjButtonSuivant().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
         vue.getjButtonFermer().addActionListener(this);
 
     }
 
-        
     public final void afficherLesVisiteurs() {
         try {
             lesVisiteurs = DaoVisiteurs.getAll();
-            for (Visiteur visiteur : lesVisiteurs){
-                vue.getModeleListeVisiteurs().addElement(visiteur);                
+            for (Visiteur visiteur : lesVisiteurs) {
+                vue.getModeleListeVisiteurs().addElement(visiteur);
             }
-            
+
         } catch (SQLException ex) {
-      //      JOptionPane.showMessageDialog(vue, "Ctrl - échec de sélection des adresses");
+            //      JOptionPane.showMessageDialog(vue, "Ctrl - échec de sélection des adresses");
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
         }
 
     }
-                                               
+
+    public void afficherVisiteur() {
+        //Sélectionne le visiteur
+        unVisiteur = (Visiteur) (vue.getjComboBoxListeVisiteurs().getSelectedItem());
+
+        //Affichage
+        vue.getjTextFieldNom().setText(unVisiteur.getNom());
+        vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom());
+        vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse());
+        vue.getjTextFieldCp().setText(unVisiteur.getCp());
+        vue.getjTextFieldVille().setText(unVisiteur.getVille());
+        Secteur secteur = unVisiteur.getSecteur();
+            if (secteur == null) {
+                vue.getjTextFieldSecteur().setText("");
+            } else {
+                vue.getjTextFieldSecteur().setText(unVisiteur.getSecteur().getSec_libelle());
+            }
+            vue.getjTextFieldLabo().setText(unVisiteur.getLabo().getLab_nom());
+        
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if(source == vue.getjButtonFermer()){
-           vue.dispose();
+        if (source == vue.getjButtonFermer()) {
+            vue.dispose();
         }
-        if (source ==  vue.getjButtonOk()) {
-            unVisiteur = (Visiteur) vue.getjComboBoxListeVisiteurs().getSelectedItem();           
-            vue.getjTextFieldNom().setText(unVisiteur.getNom());     
-            vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom()); 
-            vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse()); 
-            vue.getjTextFieldVille().setText(unVisiteur.getVille()); 
+        if (source == vue.getjButtonOk()) {
+            unVisiteur = (Visiteur) vue.getjComboBoxListeVisiteurs().getSelectedItem();
+            vue.getjTextFieldNom().setText(unVisiteur.getNom());
+            vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom());
+            vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse());
+            vue.getjTextFieldVille().setText(unVisiteur.getVille());
             vue.getjTextFieldCp().setText(unVisiteur.getCp());
-            
-            
-                  
+
             Secteur secteur = unVisiteur.getSecteur();
-                if (secteur == null) {
-                    vue.getjTextFieldSecteur().setText("");
-                } else {
-                    vue.getjTextFieldSecteur().setText(unVisiteur.getSecteur().getSec_libelle());
-                }
-        vue.getjTextFieldLabo().setText(unVisiteur.getLabo().getLab_nom());
-       }
-       
-       if (source ==  vue.getjButtonSuivant()) {
-           int i = vue.getjComboBoxListeVisiteurs().getSelectedIndex();
-           int z = i+1;
-           if (z < vue.getjComboBoxListeVisiteurs().getItemCount()) {                
+            if (secteur == null) {
+                vue.getjTextFieldSecteur().setText("");
+            } else {
+                vue.getjTextFieldSecteur().setText(unVisiteur.getSecteur().getSec_libelle());
+            }
+            vue.getjTextFieldLabo().setText(unVisiteur.getLabo().getLab_nom());
+        }
+
+        if (source == vue.getjButtonSuivant()) {
+            int i = vue.getjComboBoxListeVisiteurs().getSelectedIndex();
+            int z = i + 1;
+            if (z < vue.getjComboBoxListeVisiteurs().getItemCount()) {
                 unVisiteur = (Visiteur) vue.getjComboBoxListeVisiteurs().getItemAt(z);
                 vue.getjComboBoxListeVisiteurs().setSelectedIndex(z);
-                vue.getjTextFieldNom().setText(unVisiteur.getNom());     
-                vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom()); 
-                vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse()); 
-                vue.getjTextFieldVille().setText(unVisiteur.getVille());  
+                vue.getjTextFieldNom().setText(unVisiteur.getNom());
+                vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom());
+                vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse());
+                vue.getjTextFieldVille().setText(unVisiteur.getVille());
                 vue.getjTextFieldCp().setText(unVisiteur.getCp());
-            
+
                 Secteur secteur = unVisiteur.getSecteur();
                 if (secteur == null) {
                     vue.getjTextFieldSecteur().setText("");
                 } else {
                     vue.getjTextFieldSecteur().setText(unVisiteur.getSecteur().getSec_libelle());
                 }
-        
-            vue.getjTextFieldLabo().setText(unVisiteur.getLabo().getLab_nom());
-        
 
-       
-           }
-                
-       }
-       
-        if (source ==  vue.getjButtonPrecedent()) {
-           int i = vue.getjComboBoxListeVisiteurs().getSelectedIndex();
-           int z = i-1;
-           if (z >= 0) {                
+                vue.getjTextFieldLabo().setText(unVisiteur.getLabo().getLab_nom());
+
+            }
+
+        }
+
+        if (source == vue.getjButtonPrecedent()) {
+            int i = vue.getjComboBoxListeVisiteurs().getSelectedIndex();
+            int z = i - 1;
+            if (z >= 0) {
                 unVisiteur = (Visiteur) vue.getjComboBoxListeVisiteurs().getItemAt(z);
                 vue.getjComboBoxListeVisiteurs().setSelectedIndex(z);
-                vue.getjTextFieldNom().setText(unVisiteur.getNom());     
-                vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom()); 
-                vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse()); 
-                vue.getjTextFieldVille().setText(unVisiteur.getVille());   
+                vue.getjTextFieldNom().setText(unVisiteur.getNom());
+                vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom());
+                vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse());
+                vue.getjTextFieldVille().setText(unVisiteur.getVille());
 
-               Secteur secteur = unVisiteur.getSecteur();
+                Secteur secteur = unVisiteur.getSecteur();
                 if (secteur == null) {
                     vue.getjTextFieldSecteur().setText("");
                 } else {
                     vue.getjTextFieldSecteur().setText(unVisiteur.getSecteur().getSec_libelle());
                 }
-                
-               vue.getjTextFieldLabo().setText(unVisiteur.getLabo().getLab_nom());
-               
-                
-           }
-                
-       }
-        
-    }
-        
-}
 
+                vue.getjTextFieldLabo().setText(unVisiteur.getLabo().getLab_nom());
+
+            }
+
+        }
+
+    }
+
+}
