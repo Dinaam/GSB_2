@@ -83,7 +83,12 @@ public class CtrlRapportVisite implements ActionListener
             vueDet.getjTextFieldAdresse().setText(unPraticien.getAdresse());
             vueDet.getjTextFieldCp().setText(unPraticien.getCp());
             vueDet.getjTextFieldVille().setText(unPraticien.getVille());
-            vueDet.getjTextFieldCoeff().setText(Float.toString(unPraticien.getCoef()));         
+            vueDet.getjTextFieldCoeff().setText(Float.toString(unPraticien.getCoef()));
+            
+            int z = vue.getjComboBoxPraticien().getSelectedIndex();
+                        
+            vueDet.getjComboBoxSearch().setSelectedIndex(z);
+            
         }
         
         if(source == vue.getjButtonOk()) {
