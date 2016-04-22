@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import metier.Praticien;
 import metier.RapportVisite;
 import vues.VueRapportVisite;
+import vues.VuePraticiens;
 
 /**
  *
@@ -26,6 +27,7 @@ public class CtrlRapportVisite implements ActionListener
     List<Praticien> lesPraticiens;
     private VueRapportVisite vue;
     private String matricule;
+    private VuePraticiens vueDet;
     RapportVisite unRapport;
     Praticien unPraticien;
     
@@ -34,6 +36,9 @@ public class CtrlRapportVisite implements ActionListener
         this.vue = vue;
         this.matricule = mdp;
         afficherLesRapports();
+        vue.getjButtonQuitter().addActionListener(this);
+        vue.getjButtonOk().addActionListener(this);
+        vue.getjButtonDetails().addActionListener(this);
     }
     
     public final void afficherLesRapports() {
@@ -53,8 +58,43 @@ public class CtrlRapportVisite implements ActionListener
 
     }
     
+    public void afficherRapport()
+    {
+        unRapport = (RapportVisite) (vue.getjComboBoxPraticien().getSelectedItem());
+        vue.getjTextFieldNumRap().setText(Float.toString(0));
+
+    }
+    
     public void actionPerformed(ActionEvent e)
     {
+        Object source = e.getSource();
+        if (source == vue.getjButtonQuitter()) {
+            vue.dispose();
+        }
+        if(source == vue.getjButtonDetails()) {
+            vueDet = new VuePraticiens();
+            vueDet.setVisible(true);
+            CtrlPraticiens ctrlPracticien = new CtrlPraticiens(vueDet);
+            unPraticien = (Praticien) vue.getjComboBoxPraticien().getSelectedItem();
+            
+            vueDet.getjTextFieldNum().setText(Integer.toString(unPraticien.getId()));
+            vueDet.getjTextFieldNom().setText(unPraticien.getNom());
+            vueDet.getjTextFieldPrenom().setText(unPraticien.getPrenom());
+            vueDet.getjTextFieldAdresse().setText(unPraticien.getAdresse());
+            vueDet.getjTextFieldCp().setText(unPraticien.getCp());
+            vueDet.getjTextFieldVille().setText(unPraticien.getVille());
+            vueDet.getjTextFieldCoeff().setText(Float.toString(unPraticien.getCoef()));
+            
+            int z = vue.getjComboBoxPraticien().getSelectedIndex();
+                        
+            vueDet.getjComboBoxSearch().setSelectedIndex(z);
+            
+        }
+        
+        if(source == vue.getjButtonOk()) {
+            unRapport = (RapportVisite) vue.getjComboBoxPraticien().getSelectedItem();
+            vue.getjTextFieldNumRap().setText(Float.toString(0));
+        }
         
     }
     

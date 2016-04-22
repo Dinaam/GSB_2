@@ -178,7 +178,7 @@ public class VuePraticiens extends javax.swing.JFrame {
         jButtonQuitter = new javax.swing.JButton();
         jButtonSuivant = new javax.swing.JButton();
         jButtonPrecedent = new javax.swing.JButton();
-        jComboBoxSearch = new javax.swing.JComboBox<String>();
+        jComboBoxSearch = new javax.swing.JComboBox<>();
         jTextFieldNum = new javax.swing.JTextField();
         jTextFieldLieu = new javax.swing.JTextField();
 
@@ -215,7 +215,12 @@ public class VuePraticiens extends javax.swing.JFrame {
 
         jButtonPrecedent.setText("Précédent");
 
-        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -331,6 +336,10 @@ public class VuePraticiens extends javax.swing.JFrame {
     private void jButtonFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFermerActionPerformed
         
     }//GEN-LAST:event_jButtonFermerActionPerformed
+
+    private void jComboBoxSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSearchActionPerformed
 
     /**
      * @param args the command line arguments

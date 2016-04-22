@@ -28,9 +28,7 @@ public class DaoRapportVisite {
         RapportVisite unRapport = null;
         Visiteur unVisiteur;
         Praticien unPraticien;
-        
-        
-        
+                
         Jdbc jdbc = Jdbc.getInstance();
         
         String requete = "SELECT * FROM rapport_visite WHERE VIS_MATRICULE ='"+ matriculeP +"'";
@@ -46,7 +44,6 @@ public class DaoRapportVisite {
             
             unPraticien = DaoPraticien.selectOneByNum(praNum);
             unVisiteur = DaoVisiteurs.selectOneByMat(matriculeP);
-            
             
             unRapport= new RapportVisite(unVisiteur,rapNum,unPraticien,rapDate,rapMotif);
             lesRapportsVisites.add(unRapport);
