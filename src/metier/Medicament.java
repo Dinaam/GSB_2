@@ -17,13 +17,13 @@ public class Medicament {
     private String composition;
     private String effets; 
     private String contreIndic;
-    private Float prix;
+    private Double prix;
     private Famille uneFamille;
 
     public Medicament() {
     }
 
-    public Medicament(String code, String nom, String composition, String effets, String contreIndic, Float prix, Famille uneFamille) {
+    public Medicament(String code, String nom, String composition, String effets, String contreIndic, Double prix, Famille uneFamille) {
         this.code = code;
         this.nom = nom;
         this.composition = composition;
@@ -73,11 +73,11 @@ public class Medicament {
         this.contreIndic = contreIndic;
     }
 
-    public Float getPrix() {
+    public Double getPrix() {
         return prix;
     }
 
-    public void setPrix(Float prix) {
+    public void setPrix(Double prix) {
         this.prix = prix;
     }
 
@@ -94,8 +94,9 @@ public class Medicament {
         return  nom ;
     }
 
-    
-    
+    public String toString2() {
+        return "Medicament{" + "code=" + code + ", nomCommercial=" + nom + ", composition=" + composition + ", effets=" + effets + ", contreIndic=" + contreIndic + ", prixEchantillon=" + prix + ", famille=" + uneFamille + '}';
+    }
     
 }
 

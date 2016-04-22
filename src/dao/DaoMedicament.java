@@ -40,7 +40,7 @@ public class DaoMedicament {
             String composition = res.getString("MED_COMPOSITION");
             String effets = res.getString("MED_EFFETS");
             String contreIndic = res.getString("MED_CONTREINDIC");
-            Float prix = res.getFloat("MED_PRIXECHANTILLON");
+            Double prix = res.getDouble("MED_PRIXECHANTILLON");
             String famCode = res.getString("FAM_CODE");
             
             uneFamille = DaoFamille.getOneByCodeFam(famCode);
