@@ -45,12 +45,25 @@ public class DaoRapportVisite {
             unPraticien = DaoPraticien.selectOneByNum(praNum);
             unVisiteur = DaoVisiteurs.selectOneByMat(matriculeP);
             
-            unRapport= new RapportVisite(unVisiteur,rapNum,unPraticien,rapDate,rapMotif);
+            unRapport= new RapportVisite(unVisiteur,rapNum,unPraticien,rapDate,rapBilan, rapMotif);
             lesRapportsVisites.add(unRapport);
         }
         
         return lesRapportsVisites;
         
+    }
+    
+    /**
+     * 
+     */
+    public static void insertDatabase(String matriculeP, String Rapnum, int PraNum, String rapBilan, String rapMotif) throws SQLException, ClassNotFoundException
+    {
+        
+        Jdbc jdbc = Jdbc.getInstance();
+        
+        String requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_BILAN, RAP_MOTIF) VALUES ('"+matriculeP+"', '"+Rapnum+"', '"+PraNum+"', '"+rapBilan+"', '"+rapMotif+"') ";
+        PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
+        pstmt.executeUpdate();
     }
     
 }

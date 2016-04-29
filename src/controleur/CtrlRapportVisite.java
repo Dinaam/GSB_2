@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import metier.Praticien;
 import metier.RapportVisite;
@@ -30,6 +32,9 @@ public class CtrlRapportVisite implements ActionListener
     private VuePraticiens vueDet;
     RapportVisite unRapport;
     Praticien unPraticien;
+    int i = 0;
+    boolean add = false;     
+
     
     CtrlRapportVisite(VueRapportVisite vue, String mdp) 
     {
@@ -38,17 +43,26 @@ public class CtrlRapportVisite implements ActionListener
         afficherLesRapports();
         vue.getjButtonQuitter().addActionListener(this);
         vue.getjButtonOk().addActionListener(this);
+        vue.getjButtonNouveau().addActionListener(this);
         vue.getjButtonDetails().addActionListener(this);
+        vue.getjButtonSuivant().addActionListener(this);
+        vue.getjButtonPrecedent().addActionListener(this);
     }
     
     public final void afficherLesRapports() {
         try {
             lesRapportsVisites = DaoRapportVisite.selectAllByMatricule(matricule);
             lesPraticiens = DaoPraticien.getAll();
-            for (Praticien unPraticien : lesPraticiens) {
-                vue.getModeleListePracticiens().addElement(unPraticien); 
-            }
+            //unRapport = (RapportVisite) (vue.getjComboBoxPraticien().getSelectedItem());
 
+            for (Praticien unPraticien : lesPraticiens) {
+                vue.getModeleListePracticiens().addElement(unPraticien);
+            }
+                        
+            vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i).getNumRap()));
+            vue.getjTextFieldMotif().setText(lesRapportsVisites.get(i).getMotif());
+            vue.getjTextFieldBilan().setText(lesRapportsVisites.get(i).getBilan());
+                        
         } catch (SQLException ex) {
             //      JOptionPane.showMessageDialog(vue, "Ctrl - échec de sélection des adresses");
             ex.printStackTrace();
@@ -61,7 +75,9 @@ public class CtrlRapportVisite implements ActionListener
     public void afficherRapport()
     {
         unRapport = (RapportVisite) (vue.getjComboBoxPraticien().getSelectedItem());
-        vue.getjTextFieldNumRap().setText(Float.toString(0));
+        vue.getjTextFieldNumRap().setText(Float.toString(unRapport.getNumRap()));
+        
+        
 
     }
     
@@ -71,7 +87,63 @@ public class CtrlRapportVisite implements ActionListener
         if (source == vue.getjButtonQuitter()) {
             vue.dispose();
         }
-        if(source == vue.getjButtonDetails()) {
+        if (source == vue.getjButtonNouveau()) {
+            add = true;
+            
+            vue.getjTextFieldNumRap().setText("");
+            vue.getjTextFieldMotif().setText("");
+            vue.getjTextFieldBilan().setText("");
+            
+        }
+        if (source == vue.getjButtonOk()) {
+            if (add == false) {
+                JOptionPane.showMessageDialog(vue, "Merci de créer un nouveau rapport pour ajouter", "Ajout Erreur",
+                JOptionPane.ERROR_MESSAGE);
+            } else {
+                
+                unPraticien = (Praticien) vue.getModeleListePracticiens().getSelectedItem();
+                String numRap = vue.getjTextFieldNumRap().getText();
+                int id = unPraticien.getId();
+                //Date date = vue.getjDateChooser().getDate();
+                String motif = vue.getjTextFieldMotif().getText();
+                String bilan = vue.getjTextFieldBilan().getText();
+                
+               try {
+                  
+                    DaoRapportVisite.insertDatabase(matricule, numRap, id, bilan, motif);
+                    
+                    JOptionPane.showMessageDialog(vue, "Le rapport visite à bien été créé", "Ajout Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+                    
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+                    
+                
+
+                
+            }
+        }
+        if (source == vue.getjButtonSuivant()) {
+            if(i < lesRapportsVisites.size()) {
+                vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i+1).getNumRap()));
+                vue.getjTextFieldMotif().setText(lesRapportsVisites.get(i+1).getMotif());
+                vue.getjTextFieldBilan().setText(lesRapportsVisites.get(i+1).getBilan());
+            }
+            i++;
+        }
+        if (source == vue.getjButtonPrecedent()) {
+            if( i >= 0) {
+                vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i-1).getNumRap()));
+                vue.getjTextFieldMotif().setText(lesRapportsVisites.get(i-1).getMotif());
+                vue.getjTextFieldBilan().setText(lesRapportsVisites.get(i-1).getBilan());
+            }
+            i--;
+        }
+        if (source == vue.getjButtonDetails()) {
             vueDet = new VuePraticiens();
             vueDet.setVisible(true);
             CtrlPraticiens ctrlPracticien = new CtrlPraticiens(vueDet);
@@ -86,16 +158,9 @@ public class CtrlRapportVisite implements ActionListener
             vueDet.getjTextFieldCoeff().setText(Float.toString(unPraticien.getCoef()));
             
             int z = vue.getjComboBoxPraticien().getSelectedIndex();
-                        
+            
             vueDet.getjComboBoxSearch().setSelectedIndex(z);
             
         }
-        
-        if(source == vue.getjButtonOk()) {
-            unRapport = (RapportVisite) vue.getjComboBoxPraticien().getSelectedItem();
-            vue.getjTextFieldNumRap().setText(Float.toString(0));
-        }
-        
     }
-    
 }

@@ -19,14 +19,16 @@ public class RapportVisite
     Praticien unPraticien;
     Date date;
     String motif;
+    String bilan;
     
-    public RapportVisite(Visiteur unVisiteur, int numRap, Praticien unPraticien, Date date, String motif)
+    public RapportVisite(Visiteur unVisiteur, int numRap, Praticien unPraticien, Date date, String bilan, String motif)
     {
         this.unVisiteur = unVisiteur;
         this.numRap = numRap;
         this.unPraticien = unPraticien;
         this.date = date;
         this.motif = motif;
+        this.bilan = bilan;
     }
     
    
@@ -41,6 +43,11 @@ public class RapportVisite
     public Date getDate()
     {
         return date;
+    }
+    
+    public String getBilan()
+    {
+        return bilan;
     }
     
     public String getMotif()
@@ -71,7 +78,10 @@ public class RapportVisite
         this.numRap = numRap;
     }
     
-   
+   public void setBilan(String bilan)
+   {
+       this.bilan = bilan;
+   }
     
     public void setMotif(String motif) 
     {

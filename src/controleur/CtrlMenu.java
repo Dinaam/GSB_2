@@ -34,7 +34,6 @@ public class CtrlMenu implements ActionListener{
         this.vueMenu =  vue;
         vueMenu.getjButtonDeco().addActionListener(this);
         vueMenu.getjButtonVisiteurs().addActionListener(this);
-        vueMenu.getjButtonRapport().addActionListener(this);
         vueMenu.getjButtonPracticiens().addActionListener(this);
         vueMenu.getjButtonRapport().addActionListener(this);
         vueMenu.getjButtonMedicaments().addActionListener(this);

@@ -24,19 +24,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
         initComponents();
         modeleListePracticiens = new DefaultComboBoxModel();
         jComboBoxPraticien.setModel(modeleListePracticiens);
-    }
-
-    
-
-    public JButton getjButtonPrecedent() {
-        return jButtonPrecedent;
-    }
-
-    public JButton getjButtonSuivant() {
-        return jButtonSuivant;
-    }
-
-    
+    } 
 
     public JButton getjButtonOk() {
         return jButtonOk;
@@ -58,7 +46,13 @@ public class VueRapportVisite extends javax.swing.JFrame {
         return modeleListePracticiens;
     }
    
+    public JButton getjButtonPrecedent() {
+        return jButtonPrecedent;
+    }
 
+    public JButton getjButtonSuivant() {
+        return jButtonSuivant;
+    }
     
     public JButton getjButtonDetails() {
         return jButtonDetails;
@@ -123,10 +117,10 @@ public class VueRapportVisite extends javax.swing.JFrame {
         jLabelRapport = new javax.swing.JLabel();
         jTextFieldNumRap = new javax.swing.JTextField();
         jDateChooserDate = new com.toedter.calendar.JDateChooser();
-        jButtonPrecedent = new javax.swing.JButton();
-        jButtonSuivant = new javax.swing.JButton();
         jButtonNouveau = new javax.swing.JButton();
         jLabelConsulterLesRapports = new javax.swing.JLabel();
+        jButtonPrecedent = new javax.swing.JButton();
+        jButtonSuivant = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,23 +140,19 @@ public class VueRapportVisite extends javax.swing.JFrame {
 
         jLabelRapport.setText("N° de rapport ");
 
-        jButtonPrecedent.setText("Précédent ");
-
-        jButtonSuivant.setText("Suivant");
-
         jButtonNouveau.setText("Créer nouveau rapport");
 
         jLabelConsulterLesRapports.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelConsulterLesRapports.setText("Consulter les rapports");
 
+        jButtonPrecedent.setText("Precedent");
+
+        jButtonSuivant.setText("Suivant");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(jLabelConsulterLesRapports)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,18 +175,20 @@ public class VueRapportVisite extends javax.swing.JFrame {
                 .addGap(106, 106, 106))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonOk, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonPrecedent, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSuivant, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonNouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPrecedent, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonOk, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(jButtonSuivant, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(jLabelConsulterLesRapports)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,19 +216,19 @@ public class VueRapportVisite extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldBilan, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonPrecedent)
-                            .addComponent(jButtonSuivant))
-                        .addGap(9, 9, 9)
+                            .addComponent(jButtonSuivant, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonPrecedent, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonNouveau)
                             .addComponent(jButtonOk)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonQuitter)
-                        .addGap(20, 20, 20))))
+                        .addGap(49, 49, 49))))
         );
 
         pack();
