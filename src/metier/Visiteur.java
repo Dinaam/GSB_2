@@ -105,5 +105,8 @@ public class Visiteur {
         this.secteur = secteur;
         this.labo = labo;
     }
+    public String toString2(){
+                return "Visiteur{" + "id=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", cp=" + cp + ", adresse=" + adresse + ", ville=" + ville + ", dateDEmbauche=" + date + ", secteur=" + secteur + ", labo=" + labo + '}';
+    }
     
 }

@@ -62,7 +62,7 @@ public class CtrlMedicaments implements ActionListener {
         vue.getjTextFieldCompo().setText(unMedicament.getComposition());
         vue.getjTextAreaEffets().setText(unMedicament.getEffets());
         vue.getjTextAreaContreIndic().setText(unMedicament.getContreIndic());
-        vue.getjTextFieldPrix().setText(Float.toString(unMedicament.getPrix()));
+        vue.getjTextFieldPrix().setText(Double.toString(unMedicament.getPrix()));
         Famille uneFamille = unMedicament.getUneFamille();
         if (uneFamille != null) {
             vue.getjTextFieldFamille().setText(uneFamille.getLibelle());
@@ -84,7 +84,7 @@ public class CtrlMedicaments implements ActionListener {
             vue.getjTextFieldCompo().setText(unMedicament.getComposition());
             vue.getjTextAreaEffets().setText(unMedicament.getEffets());
             vue.getjTextAreaContreIndic().setText(unMedicament.getContreIndic());
-            vue.getjTextFieldPrix().setText(Float.toString(unMedicament.getPrix()));
+            vue.getjTextFieldPrix().setText(Double.toString(unMedicament.getPrix()));
             Famille uneFamille = unMedicament.getUneFamille();
             if (uneFamille != null) {
                 vue.getjTextFieldFamille().setText(uneFamille.getLibelle());
@@ -103,7 +103,7 @@ public class CtrlMedicaments implements ActionListener {
                 vue.getjTextFieldCompo().setText(unMedicament.getComposition());
                 vue.getjTextAreaEffets().setText(unMedicament.getEffets());
                 vue.getjTextAreaContreIndic().setText(unMedicament.getContreIndic());
-                vue.getjTextFieldPrix().setText(Float.toString(unMedicament.getPrix()));
+                vue.getjTextFieldPrix().setText(Double.toString(unMedicament.getPrix()));
                 Famille uneFamille = unMedicament.getUneFamille();
                 if (uneFamille != null) {
                     vue.getjTextFieldFamille().setText(uneFamille.getLibelle());
@@ -125,7 +125,7 @@ public class CtrlMedicaments implements ActionListener {
                 vue.getjTextFieldCompo().setText(unMedicament.getComposition());
                 vue.getjTextAreaEffets().setText(unMedicament.getEffets());
                 vue.getjTextAreaContreIndic().setText(unMedicament.getContreIndic());
-                vue.getjTextFieldPrix().setText(Float.toString(unMedicament.getPrix()));
+                vue.getjTextFieldPrix().setText(Double.toString(unMedicament.getPrix()));
                 Famille uneFamille = unMedicament.getUneFamille();
                 if (uneFamille != null) {
                     vue.getjTextFieldFamille().setText(uneFamille.getLibelle());

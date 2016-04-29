@@ -103,7 +103,7 @@ public class DaoVisiteurs {
 //        ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_NOM='"+ login +"'");
         Jdbc jdbc = Jdbc.getInstance();
         
-        String requete = "SELECT * FROM visiteur where VIS_NOM ='"+ matricule +"'";
+        String requete = "SELECT * FROM visiteur where VIS_MATRICULE ='"+ matricule +"'";
         PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
         ResultSet res = pstmt.executeQuery();
         

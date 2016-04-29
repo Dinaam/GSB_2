@@ -54,4 +54,8 @@ public class Labo{
     public void setLab_chefVente(String lab_chefVente) {
         this.lab_chefVente = lab_chefVente;
     }
+     public String toString2() {
+        return "Labo{" + "id=" + lab_code + ", nom=" + lab_nom + ", chefVente=" + lab_chefVente + '}';
+    }
+
 }
