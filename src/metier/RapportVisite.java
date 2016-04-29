@@ -5,7 +5,7 @@
  */
 package metier;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -31,6 +31,10 @@ public class RapportVisite
         this.bilan = bilan;
     }
     
+    public RapportVisite()
+    {
+       
+    }
    
     
     public int getNumRap()
@@ -70,6 +74,10 @@ public class RapportVisite
     public void setUnPraticien(Praticien unPraticien) {
         this.unPraticien = unPraticien;
     }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
     
    
     
@@ -86,6 +94,11 @@ public class RapportVisite
     public void setMotif(String motif) 
     {
         this.motif = motif;
+    }
+
+    @Override
+    public String toString() {
+        return "RapportVisite{" + "unVisiteur=" + unVisiteur + ", numRap=" + numRap + ", unPraticien=" + unPraticien + ", date=" + date + ", motif=" + motif + ", bilan=" + bilan + '}';
     }
     
 }
