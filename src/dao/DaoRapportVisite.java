@@ -15,7 +15,7 @@ import metier.Visiteur;
  * @author Maxime
  */
 public class DaoRapportVisite {
-    
+        
     /**
      * @param matriculeP
      * @return RapportVisite by Matricule
@@ -56,12 +56,12 @@ public class DaoRapportVisite {
     /**
      * 
      */
-    public static void insertDatabase(String matriculeP, String Rapnum, int PraNum, String rapBilan, String rapMotif) throws SQLException, ClassNotFoundException
+    public static void insertDatabase(String matriculeP, String Rapnum, int PraNum, String rapDate, String rapBilan, String rapMotif) throws SQLException, ClassNotFoundException
     {
         
         Jdbc jdbc = Jdbc.getInstance();
         
-        String requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_BILAN, RAP_MOTIF) VALUES ('"+matriculeP+"', '"+Rapnum+"', '"+PraNum+"', '"+rapBilan+"', '"+rapMotif+"') ";
+        String requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES ('"+matriculeP+"', '"+Rapnum+"', '"+PraNum+"', '"+rapDate+"', '"+rapBilan+"', '"+rapMotif+"') ";
         PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
         pstmt.executeUpdate();
     }

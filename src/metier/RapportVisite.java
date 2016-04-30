@@ -30,8 +30,8 @@ public class RapportVisite
         this.motif = motif;
         this.bilan = bilan;
     }
-    
-    public RapportVisite()
+
+    public RapportVisite(int nu)
     {
        
     }

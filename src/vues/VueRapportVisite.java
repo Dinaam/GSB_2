@@ -136,7 +136,18 @@ public class VueRapportVisite extends javax.swing.JFrame {
 
         jLabel1.setText("Bilan");
 
-        jButtonOk.setText("Ok");
+        jTextFieldBilan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBilanActionPerformed(evt);
+            }
+        });
+
+        jButtonOk.setText("Créer");
+        jButtonOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOkActionPerformed(evt);
+            }
+        });
 
         jLabelRapport.setText("N° de rapport ");
 
@@ -154,7 +165,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDateRapport)
                     .addComponent(jLabelMotif)
@@ -216,7 +227,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldBilan, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -233,6 +244,14 @@ public class VueRapportVisite extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonOkActionPerformed
+
+    private void jTextFieldBilanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBilanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBilanActionPerformed
 
     /**
      * @param args the command line arguments

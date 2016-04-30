@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {        
        // Jdbc.creer("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:", "@172.15.11.102:1521:orcl", "", "ora_2slamppe_eq3", "equipe03");
 
-       Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql:", "//localhost/", "gsb_visiteurs", "root", "");
+       Jdbc.creer("com.mysql.jdbc.Driver", "jdbc:mysql:", "//localhost/", "gsb", "root", "mysql");
 
         try {
             Jdbc.getInstance().connecter();

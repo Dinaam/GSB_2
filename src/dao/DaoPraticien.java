@@ -13,7 +13,7 @@ import metier.Praticien;
 import metier.TypePraticien;
 
 public class DaoPraticien {
-
+    
     /*
      Fonction qui permet de rechercher tous les visiteurs de la base de données
      */
