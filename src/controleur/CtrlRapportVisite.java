@@ -45,6 +45,7 @@ public class CtrlRapportVisite implements ActionListener
         this.vue = vue;
         this.matricule = mdp;
         afficherLesRapports();
+        //Ajout des écouteurs sur les boutons
         vue.getjButtonQuitter().addActionListener(this);
         vue.getjButtonOk().setVisible(false);
         vue.getjButtonOk().addActionListener(this);
@@ -56,15 +57,15 @@ public class CtrlRapportVisite implements ActionListener
     
     public final void afficherLesRapports() {
         try {
-                       
+             //remplit la liste rapport visite avec les rapports de la personne connecté
             lesRapportsVisites = DaoRapportVisite.selectAllByMatricule(matricule);
             lesPraticiens = DaoPraticien.getAll();
             //unRapport = (RapportVisite) (vue.getjComboBoxPraticien().getSelectedItem());
-
-            /* for (Praticien unPraticien : lesPraticiens) {
+            //remplit la liste praticiens avec tous les praticiens de la base de donnée
+            for (Praticien unPraticien : lesPraticiens) {
                 vue.getModeleListePracticiens().addElement(unPraticien);
-            } */
-                                                
+            }
+            // remplit chaque champ avec l'item du premier rapport de la liste                               
             vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i).getNumRap()));
             vue.getModeleListePracticiens().setSelectedItem(lesRapportsVisites.get(i).getUnPraticien());
             vue.getjDateChooserDate().setDate(lesRapportsVisites.get(i).getDate());
@@ -79,32 +80,27 @@ public class CtrlRapportVisite implements ActionListener
         }
 
     }
-    
-    public void afficherRapport()
-    {
-        unRapport = (RapportVisite) (vue.getjComboBoxPraticien().getSelectedItem());
-        vue.getjTextFieldNumRap().setText(Float.toString(unRapport.getNumRap()));
-    }
-    
-    
-    
+      
     public void actionPerformed(ActionEvent e)
     {
+        //bouton quitter
         Object source = e.getSource();
         if (source == vue.getjButtonQuitter()) {
             vue.dispose();
         }
+        //Bouton nouveau rapport 
         if (source == vue.getjButtonNouveau()) {
-            
+            // liste vide -> rapport = 1
             if (lesRapportsVisites.isEmpty()) {
                 vue.getjTextFieldNumRap().setText("1");
             } else {
+                // on prend le dernier de la liste et on ajoute 1 
                 int num = lesRapportsVisites.size()-1;
                 vue.getjTextFieldNumRap().setText(valueOf(lesRapportsVisites.get(num).getNumRap() +1));
             }
             
             add = true;
-            
+            //Vidage des champs pour créer un nouveau rapport
             vue.getjButtonOk().setVisible(true);
             vue.getjDateChooserDate().setDate(null);
             vue.getjTextFieldMotif().setText("");
@@ -144,6 +140,8 @@ public class CtrlRapportVisite implements ActionListener
                 
             }
         }
+        //action bouton suivant
+        //récupération des champs des index i+1 dans la liste
         if (source == vue.getjButtonSuivant()) {
             if(i < lesRapportsVisites.size()-1) {
                 vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i+1).getNumRap()));
@@ -155,6 +153,8 @@ public class CtrlRapportVisite implements ActionListener
             }
             System.out.println(lesRapportsVisites.get(i));
         }
+        //action bouton précédent
+        //récupération des champs des index i-1 dans la liste
         if (source == vue.getjButtonPrecedent()) {
             if( i > 0) {
                 vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i-1).getNumRap()));
@@ -165,6 +165,8 @@ public class CtrlRapportVisite implements ActionListener
                 i--;
             }
         }
+        //bouton détails
+        //ouvre la fiche de détail du praticien sélectionné 
         if (source == vue.getjButtonDetails()) {
             vueDet = new VuePraticiens();
             vueDet.setVisible(true);

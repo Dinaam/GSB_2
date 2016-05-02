@@ -33,6 +33,7 @@ public class CtrlPraticiens implements ActionListener {
         this.vue = vue;
         afficherLesPraticiens();
         afficherPraticien();
+        //ajout des écouteurs sur les boutons de la vue
         vue.getjButtonOk().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
@@ -41,6 +42,7 @@ public class CtrlPraticiens implements ActionListener {
 
     public final void afficherLesPraticiens() {
         try {
+            //remplit la liste des praticiens
             lesPraticiens = DaoPraticien.getAll();
             for (Praticien unPraticien : lesPraticiens) {
                 vue.getModeleListePraticiens().addElement(unPraticien);
@@ -79,9 +81,11 @@ public class CtrlPraticiens implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+        //bouton quitter
         if (source == vue.getjButtonQuitter()) {
             vue.dispose();
         }
+        //bouton Ok
         if (source == vue.getjButtonOk()) {
             unPraticien = (Praticien) vue.getjComboBoxSearch().getSelectedItem();
             vue.getjTextFieldNum().setText(Float.toString(unPraticien.getId()));
@@ -100,6 +104,7 @@ public class CtrlPraticiens implements ActionListener {
             }
 
         }
+        //Bouton suivant
         if (source == vue.getjButtonSuivant()) {
             int i = vue.getjComboBoxSearch().getSelectedIndex();
             int z = i + 1;
@@ -124,7 +129,7 @@ public class CtrlPraticiens implements ActionListener {
             }
 
         }
-
+        //bouton précédent
         if (source ==  vue.getjButtonPrecedent()) {
            int i = vue.getjComboBoxSearch().getSelectedIndex();
            int z = i-1;

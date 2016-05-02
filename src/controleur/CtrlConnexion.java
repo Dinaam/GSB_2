@@ -17,6 +17,9 @@ import vues.VueMenu;
 /**
  *
  * @author Dinam
+ * 
+ * Controleur de connexion
+ * 
  */
 public class CtrlConnexion implements ActionListener {
 
@@ -31,6 +34,7 @@ public class CtrlConnexion implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+        //Récupération des données login et mdp lors de la connexion
         if (source == vueConnexion.getjButtonConnect()) {
             String login = vueConnexion.getjTextFieldLogin().getText();
             String mdp = vueConnexion.getjPasswordFieldMdp().getText();
@@ -38,12 +42,12 @@ public class CtrlConnexion implements ActionListener {
             
 
             try {
-                
+                // Si pas de visiteurs avec le couple nom/Login 
                 Visiteur unVisiteur = DaoVisiteurs.selectOneByLogin(login);
                 if (unVisiteur == null) {
                     JOptionPane.showMessageDialog(vueConnexion, "Aucun visiteur avec ce login");
                 } else {
-
+                    //Mot de passe équivalent a la valeur du matricul de l'objet visiteur
                     if (mdp.equals(unVisiteur.getMatricule())) {
                         vueMenu = new VueMenu();
                         CtrlMenu ctrlMenu = new CtrlMenu(vueMenu, mdp, login);

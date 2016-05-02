@@ -28,8 +28,8 @@ public class VueMenu extends javax.swing.JFrame {
         return jButtonVisiteurs;
     }
     
-    public JButton getjButtonPracticiens() {
-           return jButtonPracticiens;
+    public JButton getjButtonPraticiens() {
+           return jButtonPraticiens;
     }
 
     public JButton getjButtonMedicaments() {
@@ -53,7 +53,7 @@ public class VueMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButtonRapport = new javax.swing.JButton();
         jButtonVisiteurs = new javax.swing.JButton();
-        jButtonPracticiens = new javax.swing.JButton();
+        jButtonPraticiens = new javax.swing.JButton();
         jButtonMedicaments = new javax.swing.JButton();
         jButtonDeco = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -68,7 +68,7 @@ public class VueMenu extends javax.swing.JFrame {
 
         jButtonVisiteurs.setText("Visiteurs");
 
-        jButtonPracticiens.setText("Practiciens");
+        jButtonPraticiens.setText("Praticiens");
 
         jButtonMedicaments.setText("Médicaments");
 
@@ -111,7 +111,7 @@ public class VueMenu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButtonMedicaments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonVisiteurs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonPracticiens, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonPraticiens, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonRapport))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
@@ -135,7 +135,7 @@ public class VueMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonVisiteurs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonPracticiens)
+                .addComponent(jButtonPraticiens)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonMedicaments)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -188,7 +188,7 @@ public class VueMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDeco;
     private javax.swing.JButton jButtonMedicaments;
-    private javax.swing.JButton jButtonPracticiens;
+    private javax.swing.JButton jButtonPraticiens;
     private javax.swing.JButton jButtonRapport;
     private javax.swing.JButton jButtonVisiteurs;
     private javax.swing.JLabel jLabel1;

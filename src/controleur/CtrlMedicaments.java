@@ -40,6 +40,7 @@ public class CtrlMedicaments implements ActionListener {
 
     public final void afficherLesMedicaments() {
         try {
+            //Remplit la liste déroulante  avec la liste des médicaments
             lesMedicaments = DaoMedicament.getAll();
             for (Medicament unMedicament : lesMedicaments) {
                 vue.getModeleListeMedicaments().addElement(unMedicament);
@@ -71,13 +72,15 @@ public class CtrlMedicaments implements ActionListener {
         }
 
     }
-
+    // gère les actions sur les boutons 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+        //Bouton quitter
         if (source == vue.getjButtonQuitter()) {
             vue.dispose();
         }
+        //bouton ok
         if (source == vue.getjButtonOk()) {
             unMedicament = (Medicament) vue.getjComboBoxSearch().getSelectedItem();
             vue.getjTextFieldCode().setText(unMedicament.getCode());
@@ -91,8 +94,8 @@ public class CtrlMedicaments implements ActionListener {
             } else {
                 vue.getjTextFieldFamille().setText("aucun");
             }
-
         }
+        //bouton suivant
         if (source == vue.getjButtonSuivant()) {
             int i = vue.getjComboBoxSearch().getSelectedIndex();
             int z = i + 1;
@@ -114,7 +117,7 @@ public class CtrlMedicaments implements ActionListener {
             }
 
         }
-
+        // Bouton précédent
         if (source == vue.getjButtonPrecedent()) {
             int i = vue.getjComboBoxSearch().getSelectedIndex();
             int z = i - 1;

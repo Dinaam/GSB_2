@@ -31,7 +31,7 @@ public class RapportVisite
         this.bilan = bilan;
     }
 
-    public RapportVisite(int nu)
+    public RapportVisite()
     {
        
     }
