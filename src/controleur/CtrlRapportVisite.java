@@ -117,13 +117,12 @@ public class CtrlRapportVisite implements ActionListener
                 String numRap = vue.getjTextFieldNumRap().getText();
                 int id = unPraticien.getId();
                 Date date = vue.getjDateChooserDate().getDate();
-                String date2 = new SimpleDateFormat("yyyy-MM-dd").format(date);
                 String motif = vue.getjTextFieldMotif().getText();
                 String bilan = vue.getjTextFieldBilan().getText();
                 
                try {
                   
-                    DaoRapportVisite.insertDatabase(matricule, numRap, id, date2, bilan, motif);
+                    DaoRapportVisite.insertDatabase(matricule, numRap, id, date, bilan, motif);
                     
                     JOptionPane.showMessageDialog(vue, "Le rapport visite à bien été créé", "Ajout Success",
                     JOptionPane.INFORMATION_MESSAGE);
