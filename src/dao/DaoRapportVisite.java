@@ -1,14 +1,17 @@
 package dao;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import metier.Praticien;
 import metier.RapportVisite;
 import metier.Visiteur;
+import dao.Jdbc;
+
 
 /**
  * DAO RapportVisite
@@ -49,6 +52,10 @@ public class DaoRapportVisite {
             lesRapportsVisites.add(unRapport);
         }
         
+        res.close();
+        pstmt.close();
+        
+        
         return lesRapportsVisites;
         
     }
@@ -56,14 +63,17 @@ public class DaoRapportVisite {
     /**
      * 
      */
-    public static void insertDatabase(String matriculeP, String Rapnum, int PraNum, String rapDate, String rapBilan, String rapMotif) throws SQLException, ClassNotFoundException
+    public static void insertDatabase(String matriculeP, String Rapnum, int PraNum, Date rapDate, String rapBilan, String rapMotif) throws SQLException, ClassNotFoundException
     {
         
         Jdbc jdbc = Jdbc.getInstance();
-        
-        String requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES ('"+matriculeP+"', '"+Rapnum+"', '"+PraNum+"', '"+rapDate+"', '"+rapBilan+"', '"+rapMotif+"') ";
+        String date2 = new SimpleDateFormat("dd/MM/yyyy").format(rapDate);
+        String requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES ('"+matriculeP+"', '"+Rapnum+"', '"+PraNum+"', to_date('"+date2+"','dd/mm/yyyy'), '"+rapBilan+"', '"+rapMotif+"')";
         PreparedStatement pstmt = jdbc.getConnexion().prepareStatement(requete);
-        pstmt.executeUpdate();
+        pstmt.executeUpdate(requete);
+        
+        pstmt.close();
+                
     }
     
 }

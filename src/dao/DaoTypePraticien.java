@@ -39,6 +39,8 @@ public class DaoTypePraticien{
             unType = new TypePraticien(typCode, nom,lieu);
            
       }
+      res.close();
+      pstmt.close();
     return unType;
        
       

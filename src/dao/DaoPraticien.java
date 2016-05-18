@@ -119,6 +119,10 @@ public class DaoPraticien {
             unPraticien= new Praticien(num, nom, prenom, adresse, cp, ville, coeff, unType);
 
         }
+        
+        res.close();
+        pstmt.close();
+        
         return unPraticien;
     }
 }

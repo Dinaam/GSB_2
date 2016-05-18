@@ -117,41 +117,42 @@ public class CtrlRapportVisite implements ActionListener
                 String numRap = vue.getjTextFieldNumRap().getText();
                 int id = unPraticien.getId();
                 Date date = vue.getjDateChooserDate().getDate();
-                String date2 = new SimpleDateFormat("yyyy-MM-dd").format(date);
                 String motif = vue.getjTextFieldMotif().getText();
                 String bilan = vue.getjTextFieldBilan().getText();
-                
+
                try {
-                  
-                    DaoRapportVisite.insertDatabase(matricule, numRap, id, date2, bilan, motif);
+                   
+                    DaoRapportVisite.insertDatabase(matricule, numRap, id, date, bilan, motif);
                     
                     JOptionPane.showMessageDialog(vue, "Le rapport visite à bien été créé", "Ajout Success",
                     JOptionPane.INFORMATION_MESSAGE);
                     
+                    lesRapportsVisites = DaoRapportVisite.selectAllByMatricule(matricule);
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
                 } 
-                    
-                
-
                 
             }
         }
         //action bouton suivant
         //récupération des champs des index i+1 dans la liste
         if (source == vue.getjButtonSuivant()) {
-            if(i < lesRapportsVisites.size()-1) {
-                vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i+1).getNumRap()));
-                vue.getModeleListePracticiens().setSelectedItem(lesRapportsVisites.get(i+1).getUnPraticien());
-                vue.getjDateChooserDate().setDate(lesRapportsVisites.get(i+1).getDate());
-                vue.getjTextFieldMotif().setText(lesRapportsVisites.get(i+1).getMotif());
-                vue.getjTextFieldBilan().setText(lesRapportsVisites.get(i+1).getBilan());
-                i++;
-            }
-            System.out.println(lesRapportsVisites.get(i));
+
+                if(i < lesRapportsVisites.size()-1) {
+
+                    vue.getjTextFieldNumRap().setText(Integer.toString(lesRapportsVisites.get(i+1).getNumRap()));
+                    vue.getModeleListePracticiens().setSelectedItem(lesRapportsVisites.get(i+1).getUnPraticien());
+                    vue.getjDateChooserDate().setDate(lesRapportsVisites.get(i+1).getDate());
+                    vue.getjTextFieldMotif().setText(lesRapportsVisites.get(i+1).getMotif());
+                    vue.getjTextFieldBilan().setText(lesRapportsVisites.get(i+1).getBilan());
+                    i++;
+                }
+                
+                System.out.println(lesRapportsVisites.get(i));
+                         
         }
         //action bouton précédent
         //récupération des champs des index i-1 dans la liste

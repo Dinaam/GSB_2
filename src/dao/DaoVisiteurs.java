@@ -123,6 +123,10 @@ public class DaoVisiteurs {
             unVisiteur = new Visiteur(matricule, nom, prenom, adresse, cp, ville, date, unSecteur, unLabo);
 
         }
+        
+        res.close();
+        pstmt.close();
+        
         return unVisiteur;
     }
 }
